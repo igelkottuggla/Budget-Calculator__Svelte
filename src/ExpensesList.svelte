@@ -1,19 +1,29 @@
 <script>
+    import { getContext } from 'svelte';
+
     import Title from './Title.svelte';
     import SingeExpense from './SingleExpense.svelte';
     export let expenses = [];
-    export let removeExpense;
+
+    const clearList = getContext('clear');
 </script>
 
 <section>
     <Title title="expense list" />
     <ul>
         {#each expenses as expense}
-            <SingeExpense {...expense} {removeExpense} />
+            <SingeExpense {...expense} />
         {:else}
-            <h2>Currently you have no expenses</h2>
+            <h2>No expenses added to the list</h2>
         {/each}
     </ul>
+    <button
+        type="button"
+        class="btn btn-primary btn-block"
+        on:click={clearList}
+    >
+        clear expenses
+    </button>
 </section>
 
 <style>
