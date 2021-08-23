@@ -13,6 +13,7 @@
     };
 
     const removeExpense = getContext('remove');
+    const setModifiedExpense = getContext('modify');
 </script>
 
 <article class="single-expense">
@@ -32,7 +33,11 @@
         {/if}
     </div>
     <div class="expense-buttons">
-        <button class="expense-btn edit-btn" aria-label="edit expense">
+        <button
+            class="expense-btn edit-btn"
+            aria-label="edit expense"
+            on:click={() => setModifiedExpense(id)}
+        >
             <i class="fas fa-pen" />
         </button>
         <button

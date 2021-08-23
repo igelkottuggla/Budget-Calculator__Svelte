@@ -13,12 +13,31 @@
     //variables
     let expenses = [...expensesData];
 
+    //set editing variables
+    let setName = '';
+    let setAmount = null;
+    let setID = null;
+
+    //toggle form variables
+    let isFormOpen = false;
     //reactive
+    $: isEditing = setID ? true : false;
     $: total = expenses.reduce((accum, current) => {
         return (accum += current.amount);
     }, 0);
 
     //functions
+    const showForm = () => {
+        isFormOpen = true;
+    };
+
+    const closeForm = () => {
+        isFormOpen = false;
+        setName = '';
+        setAmount = null;
+        setID = null;
+    };
+
     const removeExpense = (id) => {
         expenses = expenses.filter((item) => item.id !== id);
     };
@@ -27,14 +46,49 @@
         expenses = [];
     };
 
+    const addExpense = ({ name, amount }) => {
+        let expense = { id: Math.random() * Date.now(), name, amount };
+        expenses = [expense, ...expenses];
+    };
+
+    const setModifiedExpense = (id) => {
+        let expense = expenses.find((item) => item.id === id);
+        setID = expense.id;
+        setName = expense.name;
+        setAmount = expense.amount;
+        showForm();
+    };
+
+    const editExpense = ({ name, amount }) => {
+        expenses = expenses.map((expense) => {
+            return expense.id === setID
+                ? { ...expense, name, amount }
+                : { ...expense };
+        });
+
+        setID = null;
+        setAmount = null;
+        setName = '';
+    };
+
     //context
     setContext('remove', removeExpense);
     setContext('clear', clearList);
+    setContext('modify', setModifiedExpense);
 </script>
 
-<Navbar />
+<Navbar {showForm} />
 <main class="content">
-    <ExpenseForm />
+    {#if isFormOpen}
+        <ExpenseForm
+            {addExpense}
+            name={setName}
+            amount={setAmount}
+            {isEditing}
+            {editExpense}
+            {closeForm}
+        />
+    {/if}
     <Totals title="Total expenses" {total} />
     <ExpensesList {expenses} />
 </main>
