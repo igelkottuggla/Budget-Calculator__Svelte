@@ -49,6 +49,7 @@
     const addExpense = ({ name, amount }) => {
         let expense = { id: Math.random() * Date.now(), name, amount };
         expenses = [expense, ...expenses];
+        closeForm();
     };
 
     const setModifiedExpense = (id) => {
@@ -66,9 +67,7 @@
                 : { ...expense };
         });
 
-        setID = null;
-        setAmount = null;
-        setName = '';
+        closeForm();
     };
 
     //context
@@ -92,3 +91,12 @@
     <Totals title="Total expenses" {total} />
     <ExpensesList {expenses} />
 </main>
+
+<style>
+    .content {
+        padding: 3rem 0;
+        width: 85vw;
+        max-width: 35rem;
+        margin: 0 auto;
+    }
+</style>

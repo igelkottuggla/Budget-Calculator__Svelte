@@ -38,14 +38,14 @@
             aria-label="edit expense"
             on:click={() => setModifiedExpense(id)}
         >
-            <i class="fas fa-pen" />
+            <i class="fas fa-pencil-alt" />
         </button>
         <button
             class="expense-btn delete-btn"
             aria-label="delete expense"
             on:click={() => removeExpense(id)}
         >
-            <i class="fas fa-trash" />
+            <i class="fas fa-trash-alt" />
         </button>
     </div>
 </article>
