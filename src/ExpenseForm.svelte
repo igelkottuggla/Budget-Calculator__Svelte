@@ -55,7 +55,6 @@
         padding: 1.25rem 1rem;
         text-transform: capitalize;
         border-radius: var(--mainBorderRadius);
-        box-shadow: var(--lightShadow);
     }
 
     .form-control label {
@@ -75,7 +74,6 @@
     }
     .form {
         position: relative;
-        margin-bottom: 5rem;
     }
     .close-btn {
         position: absolute;

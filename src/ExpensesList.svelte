@@ -17,13 +17,15 @@
             <h2>No expenses added to the list</h2>
         {/each}
     </ul>
-    <button
-        type="button"
-        class="btn btn-primary btn-block"
-        on:click={clearList}
-    >
-        clear expenses
-    </button>
+    {#if expenses.length > 0}
+        <button
+            type="button"
+            class="btn btn-primary btn-block"
+            on:click={clearList}
+        >
+            clear expenses
+        </button>
+    {/if}
 </section>
 
 <style>
