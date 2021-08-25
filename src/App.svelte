@@ -8,9 +8,6 @@
     import ExpenseForm from './ExpenseForm.svelte';
     import Modal from './Modal.svelte';
 
-    //data
-    // import expensesData from './expenses';
-
     //variables
     let expenses = [];
 

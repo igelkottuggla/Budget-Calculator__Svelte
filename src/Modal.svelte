@@ -1,8 +1,16 @@
 <script>
+    import { blur, fade, fly } from 'svelte/transition';
+    import { quintOut } from 'svelte/easing';
 </script>
 
-<div class="modal-container">
-    <div class="modal-content">
+<div class="modal-container" in:blur out:fade>
+    <div
+        class="modal-content"
+        in:fly={{
+            y: 200,
+            easing: quintOut,
+        }}
+    >
         <slot />
     </div>
 </div>
