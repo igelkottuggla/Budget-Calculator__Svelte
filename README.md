@@ -2,13 +2,6 @@
 
 A simple budget calculator build with Svelte.
 
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-_Note that you will need to have [Node.js](https://nodejs.org) installed._
-
 ## Get started
 
 Install the dependencies...
