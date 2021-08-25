@@ -1,6 +1,6 @@
 # Budget Calculator svelte app
 
-A simple budget calculator build with Svelte.
+A simple budget calculator built with Svelte.
 
 ## Get started
 
